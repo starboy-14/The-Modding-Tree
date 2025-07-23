@@ -3,6 +3,7 @@ let modInfo = {
 	author: "starboy",
 	pointsName: "influence",
 	modFiles: ["layers.js", "tree.js"],
+	modId: "culttree",
 
 	discordName: "",
 	discordLink: "",
@@ -16,10 +17,9 @@ let VERSION = {
 	name: "Genesis",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+let changelog = `<h1>Changelog:</h1><br><br><br>
+	<h3>v0.1 "Genesis"</h3><br><br>
+		- It begins.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -42,6 +42,10 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('f', 11)) gain = gain.times(2)
+    if (hasUpgrade('f', 12)) gain = gain.times(upgradeEffect('f', 12))
+	if (hasUpgrade('s', 11)) gain = gain.times(2)
+    if (hasUpgrade('s', 12)) gain = gain.times(upgradeEffect('s', 12))
 	return gain
 }
 
